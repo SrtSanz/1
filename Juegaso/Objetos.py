@@ -81,8 +81,6 @@ class Meteorito(pg.sprite.Sprite):
     def __init__(self, mama):
         super().__init__()
         self.mama = mama
-        
-
 
     def imagen(self):
 
