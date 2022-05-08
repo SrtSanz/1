@@ -8,25 +8,19 @@ class Escena:
     def __init__(self, pantalla):
         self.pantalla = pantalla
         self.reloj = pg.time.Clock()
+    def buble_ppal(self):
+        pass
         
-
 class Partida(Escena):
     def __init__(self, pantalla):
         super().__init__(pantalla)
-        self.pantalla = pg.display.set_mode((ANCHO_X_W, ALTO_Y_H))       
+        self.pantalla = pg.display.set_mode()
+        self.fondo = pg.transform.scale(pg.image.load("Recursos/Imagenes/1fondo.png").convert_alpha(),(self.ANCHO_X_W, self.ALTO_Y_H))   
         self.jugador = Jugador(self.pantalla, self.pantalla.get_width() // 2, self.pantalla.get_height() // 2)
         self.meteorito = []
         #self.meteoritos = [] #creamos una lista vacía  y ahí montamos un bucle
         self.todos = []
-        self.todos.append(self.meteorito)
-        self.todos.append(self.jugador)
-        self.vidas = 3
-
-
-        #Imagenes
-        pg.image.load("Recursos/6fondo.webp").convert_alpha()
-        self.fondo = pg.transform.scale(pg.image.load("Recursos/6fondo.webp").convert_alpha(),(self.ANCHO_X_W, self.ALTO_Y_H))
-        
+        self.reset()        
 
         """
         def crea_meteoritos(self):
@@ -39,9 +33,19 @@ class Partida(Escena):
 
         self.todos = self.todos + self.meteoritos #sumas dos arrais los concatenas en listas
 
-        
+    def reset(self):
+        self.meteorito = []
+        #self.meteoritos = [] #creamos una lista vacía  y ahí montamos un bucle
+        self.todos = []
+        self.todos.append(self.meteorito)
+        self.todos.append(self.jugador)
+        self.vidas = 3
+
     def bucle_ppal(self):
-    #nivel = 0    
+    #nivel = 0
+    #self.reset()
+    #Inicializaciones
+
     #while self.vidas > 0 and nivel < len(mapa_niveles):
         #self.creameteoritos(nivel)
         
@@ -68,12 +72,10 @@ class Partida(Escena):
         self.jugador.reset() <- la inicializa en su sitio
         """
             #Llamadas de método
-        
-            self.pantalla.blit(self.fondo,(0, 0))
-            self.pantalla.blit(self.nave,(50, 400))
+            self.pantalla.blit(self.fondo,(0, 0))            
 
-            self.jugador.mover()
-            # self.escena.mover()
+            #self.jugador.mover()
+            #self.escena.mover()
             #self.meteorito.mover()
 
             #todos los cosos que se mueven
@@ -102,16 +104,51 @@ class Partida(Escena):
                 meteorito.imagen()
 
             """
+            pg.display.flip()
+pg.quit()
 
+class Ganador(Escena):
+    def __init__(self, pantalla):
+        super().__init__(pantalla)
+        self.fuente = pg.font.Font("Recursos/Fuente/Roboto-Medium.ttf", 50)
+    
+    def bucle_ppal(self):
+        while True:
+            for evento in pg.event.get()
+                if evento.type == pg.QUIT:
+                    exit()
+                if evento.type == pg.KEYDOWN:
+                    if evento.key == pg.K_SPACE:
+                        break
         
-        
+            self.pantalla.fill((30,30,30))
+            texto = self.fuente.render("¡¡GANAS!!", True, (256,156,265))
+            print(texto.get_rect())
 
-        pg.display.flip()
+            self.pantalla.blit(texto, (10,10))
+
+            pg.display.flip()
 
 class G_O(Escena):
     def __init__(self, pantalla):
-        super().__init__():
-        
+        pg.Rect
+        super().__init__(pantalla)
+        self.fuente = pg.font.SysFont("Recursos/Fuente/Roboto-Medium.ttf", 30)
+    
+    def bucle_ppal(self):
+        while True:
+            for evento in pg.event.get()
+                if evento.type == pg.QUIT:
+                    exit()
+                if evento.type == pg.KEYDOWN:
+                    if evento.key == pg.K_SPACE:
+                        break
+            
+            self.pantalla.fill((30,30,30))
+            texto = self.fuente.render("GAME OVER", True, (256,156,265))
+            rectext = texto.get_rect()
+            print(texto.get_rect())
 
+            self.pantalla.blit(texto, (self.pantalla.get_width() - rectext.width) // 2,(self.pantalla.get_height() - rectext.height)//2)
 
-pg.quit()
+            pg.display.flip()

@@ -22,18 +22,17 @@ class Madrina:
 
 class Jugador(Madrina):
     def __init__(self, mama, x, y, ANCHO_X_W = 1200, ALTO_Y_H = 800):
+        self.nave = pg.transform.scale(pg.image.load("Recursos/Imagenes/nave.png").convert_alpha(),(150,80))
+        self.rect = self.nave.get_rect()
         super().__init__(mama, x, y, ANCHO_X_W, ALTO_Y_H)
         self.vx = 1
         self.vy = 1
         self.vive = True
 
     def imagen(self):
-        
-        nave = pg.image.load("Recursos/nave.png").convert_alpha() #buscar lo del alpha para optimizar
-        nave = pg.transform.scale(nave,(200,80))
+        self.mama.blit(self.nave(self.x, self.y))
     
     def mover(self):
-
         tecla = pg.key.get_pressed()
         #Pa mover las teclas
         if tecla[pg.K_LEFT]:

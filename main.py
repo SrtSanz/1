@@ -1,3 +1,4 @@
 from Juegaso.Juego import Juego
-   
-  Juego()
+
+j = Juego()
+j.lanzar
