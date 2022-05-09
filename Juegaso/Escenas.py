@@ -1,8 +1,11 @@
 import pygame as pg
 
-from Juegaso import mapa_niveles, FPS
-
 from Juegaso.Objetos import Jugador, Meteorito 
+
+FPS = 60
+
+mapa_niveles = [[(),(),()]]
+
 
 class Escena:
     def __init__(self, pantalla):
@@ -67,10 +70,10 @@ class Partida(Escena):
             for evento in eventos:
                 if evento.type == pg.QUIT:
                     self.vidas = 0
-        """"            
-        nivel += 1
-        self.jugador.reset() <- la inicializa en su sitio
-        """
+            """           
+            nivel += 1
+            self.jugador.reset() <- la inicializa en su sitio
+            """
             #Llamadas de método
             self.pantalla.blit(self.fondo,(0, 0))            
 
@@ -114,7 +117,7 @@ class Ganador(Escena):
     
     def bucle_ppal(self):
         while True:
-            for evento in pg.event.get()
+            for evento in pg.event.get():
                 if evento.type == pg.QUIT:
                     exit()
                 if evento.type == pg.KEYDOWN:
@@ -137,7 +140,7 @@ class G_O(Escena):
     
     def bucle_ppal(self):
         while True:
-            for evento in pg.event.get()
+            for evento in pg.event.get():
                 if evento.type == pg.QUIT:
                     exit()
                 if evento.type == pg.KEYDOWN:

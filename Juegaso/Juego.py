@@ -6,10 +6,12 @@ from Juegaso.Objetos import Jugador, Meteorito, Madrina
 
 from Juegaso.Escenas import Partida, G_O
 
-from Juegaso.Juego import FPS, mapa_niveles
-
 pg.init()
 pg.display.set_caption('Un nuevo comienzo')
+
+FPS = 60
+
+mapa_niveles = [[(),(),()]]
 
 #Arreglar icono = pg.image.load("Recursos/icono.png")
 #Arreglar pg.display.set_icon(icono) 00
@@ -24,10 +26,6 @@ class Esceno():
 
     def imagen(self, fondo):
         self.fondo = fondo
-
-        #Imagenes
-        fondo = pg.image.load("Recursos/6fondo.webp").convert_alpha()
-        fondo = pg.transform.scale(fondo,(self.ANCHO_X_W, self.ALTO_Y_H))
 
     def mover(self, x, x_mover):
         self.x = x
