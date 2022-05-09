@@ -6,7 +6,7 @@ from Juegaso.Objetos import Jugador, Meteorito, Madrina
 
 from Juegaso.Escenas import Partida, G_O
 
-from Juegaso import FPS, mapa_niveles
+from Juegaso.Juego import FPS, mapa_niveles
 
 pg.init()
 pg.display.set_caption('Un nuevo comienzo')
